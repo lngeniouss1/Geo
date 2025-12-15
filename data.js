@@ -1,0 +1,14 @@
+const countries = [
+  { name: "Россия", continent: "Европа/Азия", capital: "Москва", flag: "🇷🇺", flagImg: "https://flagcdn.com/w320/ru.png", population: "144 млн", area: "17 млн км²", coords: [61.52, 105.32] },
+  { name: "США", continent: "Северная Америка", capital: "Вашингтон", flag: "🇺🇸", flagImg: "https://flagcdn.com/w320/us.png", population: "331 млн", area: "9.8 млн км²", coords: [37.09, -95.71] },
+  { name: "Китай", continent: "Азия", capital: "Пекин", flag: "🇨🇳", flagImg: "https://flagcdn.com/w320/cn.png", population: "1.41 млрд", area: "9.6 млн км²", coords: [35.86, 104.19] },
+  { name: "Бразилия", continent: "Южная Америка", capital: "Бразилиа", flag: "🇧🇷", flagImg: "https://flagcdn.com/w320/br.png", population: "214 млн", area: "8.5 млн км²", coords: [-14.23, -51.92] },
+  { name: "Австралия", continent: "Австралия", capital: "Канберра", flag: "🇦🇺", flagImg: "https://flagcdn.com/w320/au.png", population: "26 млн", area: "7.7 млн км²", coords: [-25.27, 133.77] },
+  { name: "Индия", continent: "Азия", capital: "Нью-Дели", flag: "🇮🇳", flagImg: "https://flagcdn.com/w320/in.png", population: "1.43 млрд", area: "3.3 млн км²", coords: [20.59, 78.96] },
+  { name: "Египет", continent: "Африка", capital: "Каир", flag: "🇪🇬", flagImg: "https://flagcdn.com/w320/eg.png", population: "104 млн", area: "1 млн км²", coords: [26.82, 30.80] },
+  { name: "Канада", continent: "Северная Америка", capital: "Оттава", flag: "🇨🇦", flagImg: "https://flagcdn.com/w320/ca.png", population: "38 млн", area: "10 млн км²", coords: [56.13, -106.35] },
+  { name: "Аргентина", continent: "Южная Америка", capital: "Буэнос-Айрес", flag: "🇦🇷", flagImg: "https://flagcdn.com/w320/ar.png", population: "45 млн", area: "2.8 млн км²", coords: [-38.42, -63.62] },
+  { name: "Нигерия", continent: "Африка", capital: "Абуджа", flag: "🇳🇬", flagImg: "https://flagcdn.com/w320/ng.png", population: "223 млн", area: "923 тыс км²", coords: [9.08, 8.68] },
+  { name: "Индонезия", continent: "Азия", capital: "Джакарта", flag: "🇮🇩", flagImg: "https://flagcdn.com/w320/id.png", population: "273 млн", area: "1.9 млн км²", coords: [-0.79, 113.92] },
+  { name: "Германия", continent: "Европа", capital: "Берлин", flag: "🇩🇪", flagImg: "https://flagcdn.com/w320/de.png", population: "83 млн", area: "357 тыс км²", coords: [51.17, 10.45] }
+];
