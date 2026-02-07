@@ -32,6 +32,20 @@ document.getElementById('agree-metrics').addEventListener('click', () => {
   bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
 });
 renderCountries();
+document.getElementById('agree-metrics').addEventListener('click', () => {
+  localStorage.setItem('metricsConsent', 'true');
+  // Отправляем цель в Метрику
+  ym(106707974, 'reachGoal', 'agree-metrics');
+  const script = document.createElement('script');
+  script.src = 'https://mc.yandex.ru/metrika/tag.js';
+  script.async = true;
+  script.onload = () => {
+    window.ym = window.ym || function() {(window.ym.a = window.ym.a || []).push(arguments)};
+    ym(106707974, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
+  };
+  document.head.appendChild(script);
+  bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
+});
 // База знаний
 function renderCountries() {
   const grid = document.getElementById('countries-grid');
