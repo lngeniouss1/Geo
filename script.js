@@ -5,7 +5,47 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   document.getElementById('theme-toggle').textContent = isDark ? '☀️ Светлая' : '🌙 Тёмная';
   localStorage.theme = isDark ? 'dark' : 'light';
 });
+// Попап для Метрики
+if (!localStorage.getItem('metricsConsent')) {
+  new bootstrap.Modal(document.getElementById('metricsModal')).show();
+}
 
+document.getElementById('agree-metrics').addEventListener('click', () => {
+  localStorage.setItem('metricsConsent', 'true');
+  // Подключаем Яндекс.Метрику
+  const script = document.createElement('script');
+  script.src = 'https://mc.yandex.ru/metrika/tag.js';
+  script.async = true;
+  script.onload = () => {
+    window.ym = window.ym || function() {(window.ym.a = window.ym.a || []).push(arguments)};
+    ym(106707974, 'init', {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true
+    });
+  };
+  document.head.appendChild(script);
+  bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
+});
+renderCountries();
+Обновлённый style.css (стиль попапа)
+Добавил в конец style.css:
+CSS.modal-content.bg-dark {
+  background: rgba(15, 23, 42, 0.9) !important;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.modal-header.border-bottom-0 {
+  border: none;
+}
+
+.modal-footer.border-top-0 {
+  border: none;
+}
+
+.btn-close-white {
+  filter: invert(1) grayscale(1) brightness(2);
+}
 // База знаний
 function renderCountries() {
   const grid = document.getElementById('countries-grid');
