@@ -6,6 +6,29 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   localStorage.theme = isDark ? 'dark' : 'light';
 });
 
+// Попап для Метрики
+if (!localStorage.getItem('metricsConsent')) {
+  new bootstrap.Modal(document.getElementById('metricsModal')).show();
+}
+
+document.getElementById('agree-metrics').addEventListener('click', () => {
+  localStorage.setItem('metricsConsent', 'true');
+  const script = document.createElement('script');
+  script.src = 'https://mc.yandex.ru/metrika/tag.js';
+  script.async = true;
+  script.onload = () => {
+    window.ym = window.ym || function() {(window.ym.a = window.ym.a || []).push(arguments)};
+    ym(106707974, 'init', { 
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true
+    });
+  };
+  document.head.appendChild(script);
+  bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
+});
+renderCountries();
+
 // База знаний
 function renderCountries() {
   const grid = document.getElementById('countries-grid');
@@ -46,6 +69,7 @@ document.getElementById('start-test-btn').addEventListener('click', () => {
   document.getElementById('quiz').innerHTML = '';
   showQuestion();
 });
+
 
 function showQuestion() {
   const q = quiz[qIndex];
