@@ -5,6 +5,10 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   document.getElementById('theme-toggle').textContent = isDark ? '☀️ Светлая' : '🌙 Тёмная';
   localStorage.theme = isDark ? 'dark' : 'light';
 });
+// Попап для Метрики
+if (!localStorage.getItem('metricsConsent')) {
+  new bootstrap.Modal(document.getElementById('metricsModal')).show();
+}
 
 // Попап для Метрики
 if (!localStorage.getItem('metricsConsent')) {
@@ -28,7 +32,6 @@ document.getElementById('agree-metrics').addEventListener('click', () => {
   bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
 });
 renderCountries();
-
 // База знаний
 function renderCountries() {
   const grid = document.getElementById('countries-grid');
