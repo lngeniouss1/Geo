@@ -5,10 +5,9 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   document.getElementById('theme-toggle').textContent = isDark ? '☀️ Светлая' : '🌙 Тёмная';
   localStorage.theme = isDark ? 'dark' : 'light';
 });
-// Попап для Метрики
-if (!localStorage.getItem('metricsConsent')) {
-  new bootstrap.Modal(document.getElementById('metricsModal')).show();
-}
+
+
+// Тема — без изменений
 
 // Попап для Метрики
 if (!localStorage.getItem('metricsConsent')) {
@@ -17,35 +16,25 @@ if (!localStorage.getItem('metricsConsent')) {
 
 document.getElementById('agree-metrics').addEventListener('click', () => {
   localStorage.setItem('metricsConsent', 'true');
+  bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
+  // Подключаем Метрику
   const script = document.createElement('script');
   script.src = 'https://mc.yandex.ru/metrika/tag.js';
   script.async = true;
   script.onload = () => {
     window.ym = window.ym || function() {(window.ym.a = window.ym.a || []).push(arguments)};
-    ym(106707974, 'init', { 
+    ym(106707974, 'init', {  // Твой счётчик
       clickmap: true,
       trackLinks: true,
       accurateTrackBounce: true
     });
+    ym(106707974, 'reachGoal', 'agree-metrics');  // Отправляем цель после загрузки ym
   };
   document.head.appendChild(script);
-  bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
 });
+
+// База знаний, тесты, статистика — без изменений
 renderCountries();
-document.getElementById('agree-metrics').addEventListener('click', () => {
-  localStorage.setItem('metricsConsent', 'true');
-  // Отправляем цель в Метрику
-  ym(106707974, 'reachGoal', 'agree-metrics');
-  const script = document.createElement('script');
-  script.src = 'https://mc.yandex.ru/metrika/tag.js';
-  script.async = true;
-  script.onload = () => {
-    window.ym = window.ym || function() {(window.ym.a = window.ym.a || []).push(arguments)};
-    ym(106707974, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
-  };
-  document.head.appendChild(script);
-  bootstrap.Modal.getInstance(document.getElementById('metricsModal')).hide();
-});
 // База знаний
 function renderCountries() {
   const grid = document.getElementById('countries-grid');
