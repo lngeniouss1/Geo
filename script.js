@@ -6,9 +6,6 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   localStorage.theme = isDark ? 'dark' : 'light';
 });
 
-
-// Тема — без изменений
-
 // Попап для Метрики
 if (!localStorage.getItem('metricsConsent')) {
   new bootstrap.Modal(document.getElementById('metricsModal')).show();
@@ -23,17 +20,15 @@ document.getElementById('agree-metrics').addEventListener('click', () => {
   script.async = true;
   script.onload = () => {
     window.ym = window.ym || function() {(window.ym.a = window.ym.a || []).push(arguments)};
-    ym(106707974, 'init', {  // Твой счётчик
+    ym(106707974, 'init', { 
       clickmap: true,
       trackLinks: true,
       accurateTrackBounce: true
     });
-    ym(106707974, 'reachGoal', 'agree-metrics');  // Отправляем цель после загрузки ym
+    ym(106707974, 'reachGoal', 'agree-metrics'); 
   };
   document.head.appendChild(script);
 });
-
-// База знаний, тесты, статистика — без изменений
 renderCountries();
 // База знаний
 function renderCountries() {
